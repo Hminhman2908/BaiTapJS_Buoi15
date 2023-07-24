@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài Tập 3</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content m-5">
+        <div class="title m-5">
+          <h2>Tính thuế thu nhập cá nhân</h2>
+        </div>
+        <div class="contents__input3">
+          <input type="text" placeholder="Nhập họ tên" id="txtHoTen" />
+
+          <input
+            type="number"
+            id="tong-thu-nhap-nam"
+            placeholder="Tổng thu nhập năm"
+          />
+          <input
+            type="number"
+            id="so-nguoi-phu-thuoc"
+            placeholder="Số người phụ thuộc"
+          />
+        </div>
+        <button
+          class="btn btn-success mt-5 text-center"
+          onclick="tinhTienThue()"
+        >
+          Tính Tiền Thuế
+        </button>
+        <div id="result" class="mt-5"></div>
+      </div>
+    </div>
+    <div class="homeBack text-right mr-5">
+      <button class="btn btn-warning">
+        <a href="../index.html" class="text-white">BACK HOME</a>
+      </button>
+    </div>
+    <script>
+      function tinhTienThue() {
+        var hoTen = document.getElementById("txtHoTen").value;
+        var thuNhap = document.getElementById("tong-thu-nhap-nam").value * 1;
+        var soNguoiPhuThuoc =
+          document.getElementById("so-nguoi-phu-thuoc").value * 1;
+        //---------------------------------------------
+        const thuNhap60tr = 60000000;
+        const thuNhap120tr = 120000000;
+        const thuNhap210tr = 210000000;
+        const thuNhap384tr = 384000000;
+        const thuNhap624tr = 624000000;
+        const thuNhap960tr = 960000000;
+        //---------------------------------------------
+        const tongThue60 = thuNhap60tr * 0.05;
+        const tongThue120 = thuNhap120tr * 0.1;
+        const tongThue210 = thuNhap210tr * 0.15;
+        const tongThue384 = thuNhap384tr * 0.2;
+        const tongThue624 = thuNhap624tr * 0.25;
+        const tongThue960 = thuNhap960tr * 0.3;
+        //---------------------------------------------
+        const thuNhapChiuThue = thuNhap - 4000000 - soNguoiPhuThuoc * 1600000;
+        //---------------------------------------------
+        var thueCaNhan = 0;
+        if (thuNhapChiuThue < thuNhap60tr) {
+          thueCaNhan = thuNhapChiuThue * 0.05;
+        } else if (thuNhapChiuThue < thuNhap120tr) {
+          thueCaNhan = tongThue60 + (thuNhapChiuThue - thuNhap60tr) * 0.1;
+        } else if (thuNhapChiuThue < thuNhap210tr) {
+          thueCaNhan =
+            tongThue60 + tongThue120 + (thuNhapChiuThue - thuNhap120tr) * 0.15;
+        } else if (thuNhapChiuThue < thuNhap384tr) {
+          thueCaNhan =
+            tongThue60 +
+            tongThue120 +
+            tongThue210 +
+            (thuNhapChiuThue - thuNhap210tr) * 0.2;
+        } else if (thuNhapChiuThue < thuNhap624tr) {
+          thueCaNhan =
+            tongThue60 +
+            tongThue120 +
+            tongThue210 +
+            tongThue384 +
+            (thuNhapChiuThue - thuNhap384tr) * 0.25;
+        } else if (thuNhapChiuThue < thuNhap960tr) {
+          thueCaNhan =
+            tongThue60 +
+            tongThue120 +
+            tongThue210 +
+            tongThue384 +
+            tongThue624 +
+            (thuNhapChiuThue - thuNhap624tr) * 0.3;
+        } else {
+          thueCaNhan =
+            tongThue60 +
+            tongThue120 +
+            tongThue210 +
+            tongThue384 +
+            tongThue624 +
+            tongThue960 +
+            (thuNhapChiuThue - thuNhap960tr) * 0.35;
+        }
+        document.getElementById(
+          "result"
+        ).innerHTML = `<h2 class="text-success">Tên:${hoTen}<br>Tiền thuế thu nhập cá nhân: ${thueCaNhan} VNĐ<h2/>`;
+      }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

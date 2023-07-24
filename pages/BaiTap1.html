@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài Tập 1</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content m-5">
+        <div class="title m-5">
+          <h2>quản lý tuyển sinh</h2>
+        </div>
+        <div class="contents__input">
+          <input type="number" placeholder="Điểm chuẩn" id="diem-chuan" />
+          <div>
+            <select id="chon-khu-vuc">
+              <option value="0">Chọn Khu Vực</option>
+              <option value="2">A</option>
+              <option value="1">B</option>
+              <option value="0.5">C</option>
+            </select>
+          </div>
+          <div>
+            <select id="chon-doi-tuong">
+              <option value="0">Chọn Đối Tượng</option>
+              <option value="2.5">1</option>
+              <option value="1.5">2</option>
+              <option value="1">3</option>
+            </select>
+          </div>
+          <input
+            type="number"
+            id="diem-mon-thu-1"
+            placeholder="Điểm môn thứ 1"
+          />
+          <input
+            type="number"
+            id="diem-mon-thu-2"
+            placeholder="Điểm môn thứ 2"
+          />
+          <input
+            type="number"
+            id="diem-mon-thu-3"
+            placeholder="Điểm môn thứ 3"
+          />
+        </div>
+        <button
+          class="btn btn-success mt-5 text-center"
+          onclick="tinhDiemTuyenSinh()"
+        >
+          Tính
+        </button>
+        <div id="result" class="mt-5"></div>
+      </div>
+    </div>
+    <div class="homeBack text-right mr-5">
+      <button class="btn btn-warning">
+        <a href="../index.html" class="text-white">BACK HOME</a>
+      </button>
+    </div>
+    <script>
+      function tinhDiemTuyenSinh() {
+        var diemChuan = document.getElementById("diem-chuan").value * 1;
+        var diemThiThu1 = document.getElementById("diem-mon-thu-1").value * 1;
+        var diemThiThu2 = document.getElementById("diem-mon-thu-2").value * 1;
+        var diemThiThu3 = document.getElementById("diem-mon-thu-3").value * 1;
+        var tinhKhuVuc = document.getElementById("chon-khu-vuc").value * 1;
+        var tinhDoiTuong = document.getElementById("chon-doi-tuong").value * 1;
+        var tinh =
+          diemThiThu1 + diemThiThu2 + diemThiThu3 + tinhKhuVuc + tinhDoiTuong;
+        if (diemChuan <= tinh) {
+          document.getElementById(
+            "result"
+          ).innerHTML = `<h2 class="text-success">Bạn đã đậu: Tổng điểm là:${tinh}<h2/>`;
+        } else if (diemChuan > tinh) {
+          document.getElementById(
+            "result"
+          ).innerHTML = `<h2 class="text-danger">Bạn đã rớt: Tổng điểm là:${tinh}<h2/>`;
+        }
+      }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

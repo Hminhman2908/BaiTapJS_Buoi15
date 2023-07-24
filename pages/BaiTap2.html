@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài Tập 2</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content m-5">
+        <div class="title m-5">
+          <h2>Tính Tiền Điện</h2>
+        </div>
+        <div class="content__input2">
+          <input type="text" placeholder="Họ và Tên" id="txtHoTen" />
+          <input type="number" placeholder="Nhập số Kw" id="numberKw" />
+        </div>
+        <button
+          class="btn btn-success mt-5 text-center"
+          onclick="tinhTienDien()"
+        >
+          Tính Tiền Điện
+        </button>
+        <div id="result" class="mt-5"></div>
+      </div>
+      <div class="homeBack text-right mr-5">
+        <button class="btn btn-warning">
+          <a href="../index.html" class="text-white">BACK HOME</a>
+        </button>
+      </div>
+    </div>
+    <script>
+      function tinhTienDien() {
+        var hoten = document.getElementById("txtHoTen").value;
+        var soKw = document.getElementById("numberKw").value * 1;
+        var giaTienDienTu0Den50Kw = 50 * 500;
+        if (0 < soKw && soKw <= 50) {
+          var tinh = giaTienDienTu0Den50Kw;
+        } else if (50 < soKw && soKw <= 100) {
+          var tinh = giaTienDienTu0Den50Kw + (soKw - 50) * 650;
+        } else if (100 < soKw && soKw <= 200) {
+          var tinh = giaTienDienTu0Den50Kw + 50 * 650 + (soKw - 100) * 850;
+        } else if (200 < soKw && soKw <= 350) {
+          var tinh =
+            giaTienDienTu0Den50Kw + 50 * 650 + 100 * 850 + (soKw - 200) * 1100;
+        } else if (350 < soKw) {
+          var tinh = soKw * 1300;
+          var tinh =
+            50 * 500 + 50 * 650 + 100 * 850 + 150 * 1100 + (soKw - 350) * 1300;
+        }
+        document.getElementById(
+          "result"
+        ).innerHTML = `<h2 class="text-success">Tên:${hoten}<br>Tiền Điện là:${tinh.toLocaleString()}<h2/>`;
+      }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
